@@ -6,7 +6,7 @@ const createBlog = async (payload: IBlog): Promise<IBlog> => {
   return result;
 };
 const getSingleBlog = async (blogId: string) => {
-  const result = await Blog.findById({ blogId });
+  const result = await Blog.findById( blogId );
   return result;
 };
 const getAllBlog = async () => {
