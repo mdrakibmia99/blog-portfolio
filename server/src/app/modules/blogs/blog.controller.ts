@@ -1,10 +1,9 @@
 import { StatusCodes } from "http-status-codes";
 import catchAsync from "../../utils/catchAsync";
-import { bikeService } from "../bikes/bike.service";
 import { blogService } from "./blog.service";
 
 const createBlog = catchAsync(async (req, res) => {
-    await bikeService.createBike(req.body);
+    await blogService.createBlog(req.body);
     res.status(StatusCodes.OK).json({
       success: true,
       message: 'Blog create successfully',
@@ -12,7 +11,7 @@ const createBlog = catchAsync(async (req, res) => {
     });
   });
   const getSingleBlog = catchAsync(async (req, res) => {
-    const blogId=req.params.blogId;
+    const blogId=req.params.id;
     const result=await blogService.getSingleBlog(blogId);
     res.status(StatusCodes.OK).json({
       success: true,
@@ -31,7 +30,7 @@ const createBlog = catchAsync(async (req, res) => {
     });
   });
   const updateBlog = catchAsync(async (req, res) => {
-    const blogId=req.params.blogId;
+    const blogId=req.params.id;
     const data= req.body;
     const result=await blogService.updateBlog(blogId,data);
     res.status(StatusCodes.OK).json({
@@ -42,7 +41,7 @@ const createBlog = catchAsync(async (req, res) => {
     });
   });
   const deleteBlog = catchAsync(async (req, res) => {
-    const blogId=req.params.blogId;
+    const blogId=req.params.id;
     const result=await blogService.deleteBlog(blogId);
     res.status(StatusCodes.OK).json({
       success: true,
