@@ -7,7 +7,7 @@ const createProject = async (payload: IProject): Promise<IProject> => {
   return result;
 };
 const getSingleProject = async (blogId: string) => {
-  const result = await Project.findById({ blogId });
+  const result = await Project.findById( blogId );
   return result;
 };
 const getAllProject = async () => {
