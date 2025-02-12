@@ -11,7 +11,7 @@ const createProject = catchAsync(async (req, res) => {
   });
 });
 const getSingleProject = catchAsync(async (req, res) => {
-  const blogId = req.params.blogId;
+  const blogId = req.params.id;
   const result = await projectService.getSingleProject(blogId);
   res.status(StatusCodes.OK).json({
     success: true,
