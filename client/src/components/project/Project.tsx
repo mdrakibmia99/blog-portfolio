@@ -30,6 +30,16 @@ const projects = [
      liveLink:"http://localhost:3000/",
     githubLink:"github.com"
   },
+  {
+    _id:"4",
+    title: "Blog Platform",
+    description: "A modern blog platform with markdown support and dynamic routing.A full-stack e-commerce platform with authentication and payment integration. asdfa with authentication and payment integration. asdfa with authentication and payment integration. asdfa fsafs fasdffffffffffsafsafsdf fasd",
+    image: "https://www.smartdraw.com/working-smarter/img/how-to-create-a-project-planning-map.svg",
+    link: "/projects/blog",
+    techStack: ["Next.js", "Tailwind", "Sanity.io","Next.js", "Tailwind", "Sanity.io","Next.js", "Tailwind", "Sanity.io"],
+     liveLink:"http://localhost:3000/",
+    githubLink:"github.com"
+  },
 ];
 
 export default function Project() {
@@ -41,7 +51,7 @@ export default function Project() {
       </h2>
 
       {/* Project Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:px-12 px-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:px-12 px-2">
         {projects.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
