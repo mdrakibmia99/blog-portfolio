@@ -1,5 +1,5 @@
 // import { Calendar, Home, Inbox, Search } from "lucide-react"
-import { Home, Folder, FileText, MessageCircle } from "lucide-react";
+import { Home, SquareChartGantt, FileText, MessageCircle } from "lucide-react";
 
 import {
   Sidebar,
@@ -23,7 +23,7 @@ const items = [
     {
       title: "Projects",
       url: "/dashboard/projects",
-      icon: Folder, // Changed to Folder icon
+      icon: SquareChartGantt, // Changed to Folder icon
     },
     {
       title: "Blogs",

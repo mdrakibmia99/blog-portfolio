@@ -14,6 +14,8 @@ import Link from "next/link";
 
 import { ProfileDropdown } from "./ProfileDropdown";
 import { ModeToggle } from "@/components/ModeToggle";
+import LoginButton from "@/components/auth/Login";
+import { TUserSession } from "@/types/session.user.type";
 
 const menuList = [
   { id: 1, name: "HOME", link: "/" },
@@ -22,8 +24,8 @@ const menuList = [
   { id: 5, name: "CONTACT", link: "/contact" },
 ];
 
-const Navbar = () => {
-  const isUser = true;
+const Navbar = ({ session }: { session: TUserSession }) => {
+  const isUser = session?.user;
 
   return (
     <section className="py-4 bg-black sticky top-0 z-50">
@@ -33,67 +35,55 @@ const Navbar = () => {
           <p className="text-white">Rakib</p>
         </div>
         <div className="flex gap-3 items-center">
-        {/* Middle - Navigation Links */}
-        <nav className="hidden lg:flex items-end gap-6">
-          <ul className="flex gap-6 text-white font-bold">
-            {menuList.map((item) => (
-              <li className="relative group" key={item.id}>
-                <Link href={item.link}>
-                  <span
-                    className={`cursor-pointer hover:text-red-500 transition-all duration-300 ${
-                      item.link === location.pathname ? "text-red-500" : ""
-                    }`}
-                  >
-                    {item.name}
-                  </span>
-                </Link>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-red-500 transition-all duration-300 group-hover:w-full"></span>
-              </li>
-            ))}
-          </ul>
-        </nav>
+          {/* Middle - Navigation Links */}
+          <nav className="hidden lg:flex items-end gap-6">
+            <ul className="flex gap-6 text-white font-bold">
+              {menuList.map((item) => (
+                <li className="relative group" key={item.id}>
+                  <Link href={item.link}>
+                    <span
+                      className={`cursor-pointer hover:text-red-500 transition-all duration-300 ${
+                        item.link === location.pathname ? "text-red-500" : ""
+                      }`}
+                    >
+                      {item.name}
+                    </span>
+                  </Link>
+                  <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-red-500 transition-all duration-300 group-hover:w-full"></span>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        {/* Right Side - Cart & Login/Profile */}
-        <div className="hidden lg:flex items-center gap-5">
-          
-          {/* Profile/Login Button */}
-          {isUser ? (
-            <ProfileDropdown />
-          ) : (
-            <>
-              <Link href="/login">
-                <Button
-                  variant="outline"
-                  className="text-primary-red font-semibold text-lg hover:shadow-md h-10"
-                >
-                  Log in
-                </Button>
-              </Link>
-              <ModeToggle />
-            </>
-          )}
-          <ModeToggle/>
-        </div>
+          {/* Right Side - Cart & Login/Profile */}
+          <div className="hidden lg:flex items-center gap-5">
+            {/* Profile/Login Button */}
+            {isUser ? (
+              <>
+                <ProfileDropdown image={session?.user?.image as string} />
+                <ModeToggle />
+              </>
+            ) : (
+              <>
+                <LoginButton />
+                <ModeToggle />
+              </>
+            )}
+          </div>
         </div>
 
         {/* Mobile Navbar - Drawer */}
         <div className=" lg:hidden flex gap-3">
           <Sheet>
             <div className="flex  gap-3 items-center">
-              {isUser ? (<>
-                <ProfileDropdown />
-                <ModeToggle/>
-              </>
+              {isUser ? (
+                <>
+                  <ProfileDropdown image={session?.user?.image as string} />
+                  <ModeToggle />
+                </>
               ) : (
                 <>
-                  <Link href="/login">
-                    <Button
-                      variant="outline"
-                      className="text-primary-red font-semibold"
-                    >
-                      Log in
-                    </Button>
-                  </Link>
+                  <LoginButton />
                   <ModeToggle />
                 </>
               )}

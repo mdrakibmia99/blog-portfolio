@@ -7,14 +7,15 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
-export function ProfileDropdown() {
+export function ProfileDropdown({image}:{image:string}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar className="cursor-pointer">
           <AvatarImage
-            src={"https://github.com/shadcn.png"}
+            src={image || "https://github.com/shadcn.png"}
             alt="profile image"
           />
           <AvatarFallback>Profile</AvatarFallback>
@@ -34,8 +35,9 @@ export function ProfileDropdown() {
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Button
+           onClick={()=>signOut()}
             variant={"outline"}
-            className="w-full bg-primary-red text-white hover:bg-red-700 hover:text-white"
+            className="w-full bg-primary-red text-black hover:bg-red-700 hover:text-white"
           >
             Log Out
           </Button>
