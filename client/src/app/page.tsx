@@ -1,8 +1,9 @@
+import Project from "@/components/project/Project";
 
 export default function Home() {
   return (
     <div>
-       <p>This is home page</p>
+       <Project/>
     </div>
   );
 }
