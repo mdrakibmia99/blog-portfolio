@@ -1,44 +1,110 @@
+"use client";
 import { truncateText } from "@/utils/truncateText";
 import Image from "next/image";
+import { useRef } from "react";
+import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 interface ProjectCardProps {
+  _id: string;
   title: string;
   description: string;
   image: string;
-  link: string;
+  liveLink: string;
+  githubLink: string;
   techStack: string[];
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, image, link, techStack }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  title,
+  description,
+  image,
+  liveLink,
+  githubLink,
+  techStack,
+  _id,
+}) => {
+  const techStackRef = useRef<HTMLDivElement>(null);
+
+  // Scroll handler for tech stack slider
+  const scrollTechStack = (direction: "left" | "right") => {
+    if (techStackRef.current) {
+      const scrollAmount = 120; // Adjust scroll amount
+      techStackRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <div className="rounded-xl overflow-hidden shadow-md transition transform group-hover:scale-105 group-hover:shadow-lg bg-white dark:bg-gray-900 flex flex-col ">
+    <div className="group rounded-xl overflow-hidden shadow-md transition transform hover:scale-105 hover:shadow-lg bg-white dark:bg-gray-900 flex flex-col p-4">
       {/* Image */}
-      <div className="w-full h-48 overflow-hidden">
-        <Image src={image} alt={title} width={400} height={250} className="w-full h-full object-cover hover:scale-[1.1] duration-300" />
+      <div className="w-full h-48 overflow-hidden rounded-lg">
+        <Image
+          src={image}
+          alt={title}
+          width={400}
+          height={250}
+          className="w-full h-full object-cover hover:scale-[1.1] transition-transform duration-300"
+        />
       </div>
 
-      {/* Content */}
-      <div className="p-4 flex flex-col flex-grow">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{title}</h3>
+      {/* Title & Links */}
+      <div className="flex items-center justify-between mt-3">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+          {title}
+        </h3>
+        <div className="flex items-center gap-3">
+          <a href={githubLink} target="_blank">
+            <Github className="w-5 h-5 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors" />
+          </a>
+          <a href={liveLink} target="_blank">
+            <ExternalLink className="w-5 h-5 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors" />
+          </a>
+        </div>
+      </div>
 
-        {/* Description (limited to 2 lines) */}
-        <p className="text-gray-600 dark:text-gray-300 text-sm mt-1 line-clamp-2">
-          {truncateText(description,60)}{" "}
-          <Link href={link} className="text-red-500 font-semibold hover:underline">
-            ... See More
-          </Link>
-        </p>
+      {/* Description */}
+      <p className="text-gray-600 dark:text-gray-300 text-sm mt-2 ">
+        {truncateText(description, 150)}{" "}
+        <Link
+          href={`/projects/${_id}`}
+          className="text-red-500 font-semibold hover:underline"
+        >
+          ... See More
+        </Link>
+      </p>
 
-        {/* Tech Stack */}
-        <div className="mt-auto flex flex-wrap gap-2 pt-3">
+      {/* Tech Stack Slider */}
+      <div className="relative mt-3">
+        <button
+          className="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-200  dark:bg-gray-800 p-1 rounded-full shadow-md hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+          onClick={() => scrollTechStack("left")}
+        >
+          <ChevronLeft className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+        </button>
+
+        <div
+          ref={techStackRef}
+          className="flex gap-2 overflow-x-auto no-scrollbar scroll-smooth px-6"
+        >
           {techStack.map((tech, index) => (
-            <span key={index} className="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg">
+            <span
+              key={index}
+              className="px-2 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg whitespace-nowrap"
+            >
               {tech}
             </span>
           ))}
         </div>
 
+        <button
+          className="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-200 dark:bg-gray-800 p-1 rounded-full shadow-md hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+          onClick={() => scrollTechStack("right")}
+        >
+          <ChevronRight className="w-4 h-4 text-gray-600 dark:text-gray-300" />
+        </button>
       </div>
     </div>
   );
