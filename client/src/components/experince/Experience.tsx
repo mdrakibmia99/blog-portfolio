@@ -7,7 +7,7 @@ import "react-vertical-timeline-component/style.min.css";
 import { fadeTop } from "../About/motion";
 
 // Import icons from react-icons
-import { FaReact,  FaFacebook, FaLaptopCode, FaRobot } from "react-icons/fa";
+import { FaReact,  FaRobot } from "react-icons/fa";
 
 // Fix Next.js SSR issue
 const VerticalTimeline = dynamic(
@@ -23,58 +23,33 @@ const VerticalTimelineElement = dynamic(
 // Experience Data
 const experiences = [
   {
-    title: "Web Developer",
-    company_name: "Freelancer (2021)",
-    icon: <FaLaptopCode size={30} />,
-    iconBg: "#1D4ED8", // Cyan-600
-    date: "2021",
-    points: [
-      "Built responsive websites using HTML, CSS, and JavaScript.",
-      "Optimized website performance and ensured cross-browser compatibility.",
-      "Worked on eCommerce platforms and simple business websites.",
-      "Collaborated with clients to deliver tailored web solutions.",
-    ],
-  },
-  {
-    title: "React Developer",
-    company_name: "Freelancer (2022)",
+    title: "React.js & Next.js Developer",
+    company_name: "Freelancer (2023)",
     icon: <FaReact size={30} />,
     iconBg: "#61DAFB", // React Blue
-    date: "2022",
-    points: [
-      "Developed interactive web applications using React.js.",
-      "Integrated APIs for dynamic content loading and real-time features.",
-      "Improved UI/UX based on user feedback and design principles.",
-      "Optimized performance with React Hooks and state management.",
-    ],
-  },
-  {
-    title: "Next.js Developer",
-    company_name: "Freelancer (2023)",
-    icon: <FaFacebook size={30} />,
-    iconBg: "#232931", // Dark Background for Next.js
     date: "2023",
     points: [
-      "Built full-stack applications using Next.js and Node.js.",
+      "Developed interactive web applications using React.js and Next.js.",
+      "Integrated APIs for dynamic content loading and real-time features.",
       "Utilized server-side rendering (SSR) and static site generation (SSG) for SEO optimization.",
-      "Developed API routes and integrated with databases like MongoDB.",
       "Focused on performance improvements and code splitting for faster load times.",
     ],
   },
   {
-    title: "AI Developer on Fiverr",
-    company_name: "Freelancer (2023)",
+    title: "Full-Stack Developer on Fiverr",
+    company_name: "Freelancer (2024)",
     icon: <FaRobot size={30} />,
     iconBg: "#10B981", // Green for AI
-    date: "2023",
+    date: "2024",
     points: [
-      "Utilized AI tools to automate processes and enhance workflows.",
-      "Worked on AI-based chatbots and custom solutions for clients.",
-      "Integrated machine learning models to predict trends and improve decision-making.",
-      "Offered consultation services for businesses adopting AI technologies.",
+      "Developing full-stack applications using modern technologies.",
+      "Working on both frontend and backend with frameworks like Next.js and Node.js.",
+      "Integrating third-party APIs and working with databases like MongoDB.",
+      "Building custom solutions for clients and optimizing the development workflow.",
     ],
   },
 ];
+
 
 const ExperienceCard = ({ experience }: { experience: any }) => {
   return (
@@ -108,14 +83,12 @@ const ExperienceCard = ({ experience }: { experience: any }) => {
 
 const Experience = () => {
   return (
-    <section className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <section className="py-16 bg-gray-900 transition-colors duration-300">
       <motion.div variants={fadeTop} initial="hidden" animate="visible">
-        <p className="text-center text-gray-400 text-sm uppercase tracking-wider">
-          What I have done so far
-        </p>
-        <h2 className="text-center text-3xl md:text-4xl font-bold text-black dark:text-white mt-2">
-          Work Experience
-        </h2>
+      <h3 className="text-4xl text-center mb-10 font-semibold">
+            <span className="text-cyan-600 font-bold mr-2">2.</span>
+            <span className="text-white text-shadow">Work Experience</span>
+          </h3>
       </motion.div>
 
       <div className="mt-16">

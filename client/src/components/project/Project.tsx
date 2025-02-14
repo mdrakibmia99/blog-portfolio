@@ -1,6 +1,8 @@
+'use client'
 import ProjectCard from "./ProjectCard";
 import Link from "next/link";
-
+import { motion } from "motion/react";
+import { fadeTop, motionStep } from "../About/motion";
 const projects = [
   { _id:"1",
     title: "E-Commerce Website",
@@ -45,10 +47,12 @@ const projects = [
 export default function Project() {
   return (
     <section className="px-6 container mx-auto mt-16">
+           <motion.div variants={fadeTop} {...motionStep} className="mb-16">
       {/* Section Title */}
-      <h2 className="text-2xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-8">
-        My Projects
-      </h2>
+      <h3 className="text-4xl text-center mb-10 font-semibold">
+            <span className="text-cyan-600 font-bold mr-2">3.</span>
+            <span className="text-black dark:text-white text-shadow"> My Projects</span>
+          </h3>
 
       {/* Project Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:px-12 px-2">
@@ -65,6 +69,7 @@ export default function Project() {
           </button>
         </Link>
       </div>
+      </motion.div>
     </section>
   );
 }
