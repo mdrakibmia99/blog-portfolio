@@ -1,9 +1,10 @@
+import ProjectDetails from '@/components/project/ProjectDetails';
 import React from 'react';
 
 const DynamicProjectDetailsPage = () => {
     return (
         <div>
-            <p>dynamic project details page</p>
+            <ProjectDetails/>
         </div>
     );
 };

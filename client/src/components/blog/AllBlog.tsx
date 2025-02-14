@@ -11,7 +11,7 @@ const blogs = [
       "A deep dive into Next.js and why it's a great framework for building modern web apps.",
     image:
       "https://www.smartdraw.com/working-smarter/img/how-to-create-a-project-planning-map.svg",
-    link: "/blogs/nextjs",
+    link: "/blog/1",
   },
   {
     _id: "2",
@@ -20,7 +20,7 @@ const blogs = [
       "Learn how to optimize and structure your Tailwind CSS code efficiently.",
     image:
       "https://www.smartdraw.com/working-smarter/img/how-to-create-a-project-planning-map.svg",
-    link: "/blogs/tailwind",
+    link: "/blog/2",
   },
   {
     _id: "3",
@@ -29,7 +29,7 @@ const blogs = [
       "Learn how to optimize and structure your Tailwind CSS code efficiently.",
     image:
       "https://www.smartdraw.com/working-smarter/img/how-to-create-a-project-planning-map.svg",
-    link: "/blogs/tailwind",
+    link: "/blog/3",
   },
   {
     _id: "4",
@@ -38,7 +38,7 @@ const blogs = [
       "Learn how to optimize and structure your Tailwind CSS code efficiently.",
     image:
       "https://www.smartdraw.com/working-smarter/img/how-to-create-a-project-planning-map.svg",
-    link: "/blogs/tailwind",
+    link: "/blog/4",
   },
 ];
 
