@@ -2,7 +2,7 @@ import Link from "next/link";
 import { FaFacebookF, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
 export default function Footer() {
   return (
-    <footer className="bg-gray-100 text-gray-900 py-8 px-4 lg:px-0 dark:bg-gray-900 dark:text-gray-300">
+    <footer className="bg-gray-50 text-gray-900 py-8 px-4 lg:px-0 dark:bg-gray-900 dark:text-gray-300">
       <div className="container mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
           {/* About Section */}
@@ -12,9 +12,9 @@ export default function Footer() {
               I am Md Rakib Mia, a passionate developer focused on creating modern and high-performing applications. Let&apos;s build something amazing together.
             </p>
             <div className="mt-4 flex space-x-4 text-gray-600 dark:text-gray-400">
-              <a href="https://www.facebook.com/devrakibmia" target="_blank" className="hover:text-primary-red duration-300"> <FaFacebookF className="w-7 h-7" /></a>
-              <a href="https://wa.me/+8801913547448" target="_blank" className="hover:text-primary-red duration-300"> <FaWhatsapp className="w-7 h-7" /></a>
-              <a href="https://www.linkedin.com/in/md-rakib-mia" target="_blank" className="hover:text-primary-red duration-300"> <FaLinkedinIn className="w-7 h-7" /></a>
+              <a href="https://www.facebook.com/devrakibmia" target="_blank" className="hover:text-red-400 duration-300"> <FaFacebookF className="w-7 h-7" /></a>
+              <a href="https://wa.me/+8801913547448" target="_blank" className="hover:text-red-400 duration-300"> <FaWhatsapp className="w-7 h-7" /></a>
+              <a href="https://www.linkedin.com/in/md-rakib-mia" target="_blank" className="hover:text-red-400 duration-300"> <FaLinkedinIn className="w-7 h-7" /></a>
             </div>
           </div>
 

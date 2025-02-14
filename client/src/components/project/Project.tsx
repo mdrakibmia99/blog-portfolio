@@ -51,8 +51,8 @@ export default function Project() {
       </h2>
 
       {/* Project Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:px-12 px-2">
-        {projects.map((project, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:px-12 px-2">
+        {projects?.slice(0,3)?.map((project, index) => (
           <ProjectCard key={index} {...project} />
         ))}
       </div>

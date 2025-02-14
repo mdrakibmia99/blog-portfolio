@@ -35,9 +35,9 @@ const Navbar = ({ session }: { session: TUserSession }) => {
         {/* Left Side - Logo */}
         <Link
           href="/"
-          className="text-2xl font-extrabold bg-gradient-to-r  "
+          className="text-3xl font-extrabold text-red-400  "
         >
-          Rakib
+          RAKIB
         </Link>
 
         {/* Desktop Navigation */}
