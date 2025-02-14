@@ -9,6 +9,12 @@ export default {
   ],
   theme: {
   	extend: {
+		container: {
+			center: true,  // Center the container
+			screens: {
+			  DEFAULT: "1200px",  // Set default container width
+			},
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
