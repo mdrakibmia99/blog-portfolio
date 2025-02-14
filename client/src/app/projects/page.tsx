@@ -1,11 +1,12 @@
-import React from 'react';
+import AllProject from "@/components/project/AllProject";
+import React from "react";
 
 const ProjectPage = () => {
-    return (
-        <div>
-            this is project page
-        </div>
-    );
+  return (
+    <div>
+      <AllProject />
+    </div>
+  );
 };
 
 export default ProjectPage;

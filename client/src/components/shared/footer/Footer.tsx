@@ -1,6 +1,8 @@
+'use client'
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FaFacebookF, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
-export default function Footer() {
+ function Footer() {
   return (
     <footer className="bg-gray-50 text-gray-900 py-8 px-4 lg:px-0 dark:bg-gray-900 dark:text-gray-300">
       <div className="container mx-auto ">
@@ -45,4 +47,10 @@ export default function Footer() {
       </div>
     </footer>
   );
+}
+
+export default function FooterWrapper() {
+  const pathname = usePathname();
+  const hideFooter = pathname.startsWith("/dashboard"); 
+  return !hideFooter ? <Footer /> : null;
 }

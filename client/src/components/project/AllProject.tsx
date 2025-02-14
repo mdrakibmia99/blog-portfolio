@@ -1,6 +1,5 @@
 "use client";
 import ProjectCard from "./ProjectCard";
-import Link from "next/link";
 import { motion } from "motion/react";
 import { fadeTop, motionStep } from "../About/motion";
 const projects = [
@@ -74,33 +73,23 @@ const projects = [
   },
 ];
 
-export default function Project() {
+export default function AllProject() {
   return (
-    <section className="px-6 container mx-auto mt-16">
+    <section className="px-6 container mx-auto mt-8">
       <motion.div variants={fadeTop} {...motionStep} className="mb-16">
         {/* Section Title */}
         <h3 className="text-4xl text-center mb-10 font-semibold">
-          <span className="text-cyan-600 font-bold mr-2">3.</span>
           <span className="text-black dark:text-white text-shadow">
             {" "}
-            My Projects
+            Projects
           </span>
         </h3>
 
         {/* Project Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:px-12 px-2">
-          {projects?.slice(0, 3)?.map((project, index) => (
+          {projects?.map((project, index) => (
             <ProjectCard key={index} {...project} />
           ))}
-        </div>
-
-        {/* Centered Button for "All Projects" */}
-        <div className="flex justify-center mt-10">
-          <Link href="/projects">
-            <button className="px-3 py-2 text-lg font-semibold rounded-lg transition-all duration-300 bg-gray-900 text-white dark:bg-white dark:text-gray-900 hover:scale-105 hover:shadow-lg">
-              All Projects
-            </button>
-          </Link>
         </div>
       </motion.div>
     </section>
