@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const BlogCard = ({ title, description, image, link }:{title:string, description:string, image:string, link:string}) => {
   return (
-    <div className="border rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+    <div className="p-4 border rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
       <div className="w-full h-52 overflow-hidden rounded-lg">
               <Image
                 src={image}
@@ -18,7 +18,7 @@ const BlogCard = ({ title, description, image, link }:{title:string, description
         <p className="text-gray-600 dark:text-gray-400 line-clamp-3">{description}</p>
         <div className="mt-4">
           <Link href={link}>
-            <button className="text-red-500 dark:text-red-500 hover:text-red-700 dark:hover:text-red-700 transition-all duration-300">
+            <button className="text-cyan-500 dark:text-cyan-500 hover:text-cyan-700 dark:hover:text-cyan-700 transition-all duration-300">
               See More →
             </button>
           </Link>

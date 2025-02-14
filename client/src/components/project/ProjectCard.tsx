@@ -70,7 +70,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {truncateText(description, 130)}{" "}
         <Link
           href={`/projects/${_id}`}
-          className="text-red-500 font-semibold hover:underline"
+          className="text-cyan-500 font-semibold hover:underline"
         >
           ... See More
         </Link>

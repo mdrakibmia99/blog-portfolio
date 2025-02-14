@@ -35,7 +35,7 @@ const Navbar = ({ session }: { session: TUserSession }) => {
         {/* Left Side - Logo */}
         <Link
           href="/"
-          className="text-3xl font-extrabold text-red-400  "
+          className="text-3xl font-extrabold text-cyan-400  "
         >
           RAKIB
         </Link>
@@ -49,8 +49,8 @@ const Navbar = ({ session }: { session: TUserSession }) => {
                   <span
                     className={`cursor-pointer transition-all duration-300 ${
                       pathname === item.link
-                        ? "text-red-500 dark:text-red-400"
-                        : "text-gray-800 dark:text-gray-300 hover:text-red-500 dark:hover:text-red-400"
+                        ? "text-cyan-500 dark:text-cyan-400"
+                        : "text-gray-800 dark:text-gray-300 hover:text-cyan-500 dark:hover:text-cyan-400"
                     }`}
                   >
                     {item.name}

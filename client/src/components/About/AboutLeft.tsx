@@ -8,19 +8,25 @@ function AboutLeft() {
     "Javascript",
     "React js",
     "Next js",
+    "Redux",
+    "TypeScript",
     "Tailwind CSS",
     "Daisy UI",
-    "Firebase",
+    "ShadCn",
     "Node js",
     "Express js",
     "MongoDB",
+    "Mongoose",
+    "GraphQL",
+    "NextAuth.js",
+    "Graph API",
     "Socket.io",
-    "Redux",
+  
   ];
 
   return (
     <motion.div variants={fadeTop} {...motionStep} className="col-span-3">
-      <div className="space-y-4 mt-7 text-slate-400">
+      <div className="space-y-4  text-slate-400">
         <p>
           Hello! My name is Md Rakib Mia and I enjoy creating things that live
           on the internet. My interest in web development started back in 2021

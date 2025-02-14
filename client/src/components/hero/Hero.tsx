@@ -7,7 +7,7 @@ import img from "@/assets/images/portfolioimage.png";
 const Hero = () => {
   return (
     <div className="bg-[url('https://github.com/mdrakibmia99/blog-portfolio/blob/main/client/src/assets/images/herobg.png?raw=true')] 
-    bg-cover bg-no-repeat bg-center min-h-[70vh] flex items-center justify-center py-12">
+    bg-cover bg-no-repeat bg-center min-h-[93vh] flex items-center justify-center py-12">
       
       <div className="flex flex-col md:flex-row items-center justify-between space-y-8 md:space-y-0 container mx-auto px-5 md:px-0">
         
@@ -15,7 +15,7 @@ const Hero = () => {
         <div className="text-center md:text-left space-y-4 text-white">
           <p className="text-md text-gray-300">Hi, I&apos;m </p>
           <h1 className="text-4xl font-extrabold sm:text-5xl">
-            <span className="text-red-400 font-medium text-[2rem] leading-normal md:text-[76px] md:leading-[87px] font-serif">
+            <span className="text-cyan-400 font-medium text-[2rem] leading-normal md:text-[76px] md:leading-[87px] font-serif">
               Md Rakib Mia
             </span>
           </h1>
@@ -25,13 +25,13 @@ const Hero = () => {
           </p>
 
           <div className="mt-4 flex space-x-4 text-gray-300  justify-center md:justify-start">
-            <a href="https://www.facebook.com/devrakibmia" target="_blank" className="hover:text-red-400 duration-300">
+            <a href="https://www.facebook.com/devrakibmia" target="_blank" className="hover:text-cyan-400 duration-300">
               <FaFacebookF className="w-7 h-7" />
             </a>
-            <a href="https://wa.me/+8801913547448" target="_blank" className="hover:text-red-400 duration-300">
+            <a href="https://wa.me/+8801913547448" target="_blank" className="hover:text-cyan-400 duration-300">
               <FaWhatsapp className="w-7 h-7" />
             </a>
-            <a href="https://www.linkedin.com/in/md-rakib-mia" target="_blank" className="hover:text-red-400 duration-300">
+            <a href="https://www.linkedin.com/in/md-rakib-mia" target="_blank" className="hover:text-cyan-400 duration-300">
               <FaLinkedinIn className="w-7 h-7" />
             </a>
           </div>

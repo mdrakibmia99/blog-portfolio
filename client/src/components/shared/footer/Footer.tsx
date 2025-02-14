@@ -12,9 +12,9 @@ export default function Footer() {
               I am Md Rakib Mia, a passionate developer focused on creating modern and high-performing applications. Let&apos;s build something amazing together.
             </p>
             <div className="mt-4 flex space-x-4 text-gray-600 dark:text-gray-400">
-              <a href="https://www.facebook.com/devrakibmia" target="_blank" className="hover:text-red-400 duration-300"> <FaFacebookF className="w-7 h-7" /></a>
-              <a href="https://wa.me/+8801913547448" target="_blank" className="hover:text-red-400 duration-300"> <FaWhatsapp className="w-7 h-7" /></a>
-              <a href="https://www.linkedin.com/in/md-rakib-mia" target="_blank" className="hover:text-red-400 duration-300"> <FaLinkedinIn className="w-7 h-7" /></a>
+              <a href="https://www.facebook.com/devrakibmia" target="_blank" className="hover:text-cyan-400 duration-300"> <FaFacebookF className="w-7 h-7" /></a>
+              <a href="https://wa.me/+8801913547448" target="_blank" className="hover:text-cyan-400 duration-300"> <FaWhatsapp className="w-7 h-7" /></a>
+              <a href="https://www.linkedin.com/in/md-rakib-mia" target="_blank" className="hover:text-cyan-400 duration-300"> <FaLinkedinIn className="w-7 h-7" /></a>
             </div>
           </div>
 
