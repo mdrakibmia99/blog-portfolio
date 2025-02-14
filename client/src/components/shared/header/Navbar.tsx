@@ -79,6 +79,15 @@ const Navbar = ({ session }: { session: TUserSession }) => {
         {/* Mobile Menu Button */}
         <div className="lg:hidden flex gap-3">
           <Sheet>
+             {/* Mobile Profile & Theme Toggle */}
+             <div className=" flex gap-4">
+                {isUser ? (
+                  <ProfileDropdown image={session?.user?.image as string} />
+                ) : (
+                  <LoginButton />
+                )}
+                <ModeToggle />
+              </div>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon">
                 <Menu className="size-5 text-black dark:text-white" />

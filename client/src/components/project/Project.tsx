@@ -44,9 +44,9 @@ const projects = [
 
 export default function Project() {
   return (
-    <section className="px-6 container mx-auto">
+    <section className="px-6 container mx-auto mt-16">
       {/* Section Title */}
-      <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-white mb-8">
+      <h2 className="text-2xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-8">
         My Projects
       </h2>
 
