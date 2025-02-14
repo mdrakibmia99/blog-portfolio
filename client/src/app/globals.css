@@ -120,3 +120,11 @@ body {
   }
 }
 
+
+.vertical-timeline::before {
+  background-color: cyan !important;  /* Set the line color to red */
+}
+
+.custom-vertical-timeline::before {
+  background-color: cyan !important;  /* Change the color to red */
+}

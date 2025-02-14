@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const About = () => {
   return (
-    <section className="mt-16 text-white h-auto mb-5 container mx-auto">
+    <section className="m-16  text-white h-auto mb-5 container mx-auto">
       <motion.div variants={fadeTop} {...motionStep} className='col-span-3'>
         <div className="text-center mt-8">
           <h3 className="text-4xl mb-10 font-semibold">
