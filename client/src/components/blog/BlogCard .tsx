@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const BlogCard = ({ title, description, image, link }) => {
+const BlogCard = ({ title, description, image, link }:{title:string, description:string, image:string, link:string}) => {
   return (
     <div className="border rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
       <div className="w-full h-52 overflow-hidden rounded-lg">
