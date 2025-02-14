@@ -19,12 +19,12 @@ const Hero = () => {
               Md Rakib Mia
             </span>
           </h1>
-          <p className="text-lg text-gray-300 md:text-[36px]">Full Stack Developer</p>
+          <p className="text-lg text-gray-300 md:text-[36px]">I build things for the web</p>
           <p className="text-base md:text-[28px] text-gray-400 max-w-lg mx-auto md:mx-0 leading-tight">
             Passionate about building impactful web apps and delivering high-quality solutions.
           </p>
 
-          <div className="mt-4 flex space-x-4 text-gray-600  justify-center md:justify-start">
+          <div className="mt-4 flex space-x-4 text-gray-300  justify-center md:justify-start">
             <a href="https://www.facebook.com/devrakibmia" target="_blank" className="hover:text-red-400 duration-300">
               <FaFacebookF className="w-7 h-7" />
             </a>

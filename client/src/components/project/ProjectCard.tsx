@@ -38,9 +38,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   };
 
   return (
-    <div className="group rounded-xl overflow-hidden shadow-md transition transform hover:scale-105 hover:shadow-lg bg-white dark:bg-gray-900 flex flex-col p-4">
+    <div className="group rounded-xl overflow-hidden shadow-md transition transform hover:scale-[1.03] hover:shadow-lg bg-white dark:bg-gray-900 flex flex-col p-4">
       {/* Image */}
-      <div className="w-full h-48 overflow-hidden rounded-lg">
+      <div className="w-full h-52 overflow-hidden rounded-lg">
         <Image
           src={image}
           alt={title}
@@ -56,18 +56,18 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           {title}
         </h3>
         <div className="flex items-center gap-3">
-          <a href={githubLink} target="_blank">
+          <a href={githubLink} target="_blank" className="hover:scale-[1.15] transition-all duration-300">
             <Github className="w-5 h-5 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors" />
           </a>
-          <a href={liveLink} target="_blank">
+          <a href={liveLink} target="_blank" className="hover:scale-[1.15] transition-all duration-300">
             <ExternalLink className="w-5 h-5 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors" />
           </a>
         </div>
       </div>
 
       {/* Description */}
-      <p className="text-gray-600 dark:text-gray-300 text-sm mt-2 ">
-        {truncateText(description, 150)}{" "}
+      <p className="text-gray-600 dark:text-gray-300 text-sm my-5 leading-6 ">
+        {truncateText(description, 130)}{" "}
         <Link
           href={`/projects/${_id}`}
           className="text-red-500 font-semibold hover:underline"
