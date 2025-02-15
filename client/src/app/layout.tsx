@@ -8,6 +8,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/utils/authOptions";
 import { TUserSession } from "@/types/session.user.type";
 import Footer from "@/components/shared/footer/Footer";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,6 +47,7 @@ export default async function RootLayout({
           
           {children}
           <Footer/>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

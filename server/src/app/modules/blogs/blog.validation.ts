@@ -5,6 +5,9 @@ const blogValidationSchema = z.object({
     image: z.string(),
     title: z.string(),
     description: z.string(),
+    userEmail: z.string(),
+    date: z.string(),
+    author: z.string(),
   }),
 });
 
@@ -13,6 +16,8 @@ const blogUpdateValidationSchema = z.object({
       image: z.string().optional(),
       title: z.string().optional(),
       description: z.string().optional(),
+      date: z.string().optional(),
+      author: z.string().optional(),
     }),
   });
 

@@ -1,11 +1,13 @@
-import React from 'react';
+import AdminBlog from "@/components/admin/blog/AdminBlog";
+import React from "react";
 
-const AdminBlogPage = () => {
-    return (
-        <div>
-            <p>admin blog page</p>
-        </div>
-    );
+const AllAdminBlogPage = () => {
+  return (
+    <div>
+
+      <AdminBlog />
+    </div>
+  );
 };
 
-export default AdminBlogPage;
+export default AllAdminBlogPage;

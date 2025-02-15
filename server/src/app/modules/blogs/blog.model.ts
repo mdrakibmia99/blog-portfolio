@@ -10,6 +10,9 @@ const blogSchema = new Schema<IBlog>(
       trim: true,
       required: [true, 'Description is Required'],
     },
+    author: { type:String, required: [true, 'Author is Required'] },
+    date: { type: String, required: [true, 'Date is Required'] },
+    userEmail: { type: String, required: [true, 'User Email is Required'] },
   },
   {
     // it automatic add two field 1.updatedAt 2.createdAt
