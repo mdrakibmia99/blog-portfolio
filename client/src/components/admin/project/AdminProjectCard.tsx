@@ -31,7 +31,7 @@ const AdminProjectCard = ({project}:{project:TProject}) => {
 
     try {
       // Send DELETE request to API
-      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/project/${id}`, {
+      await fetch(`${'process.env.NEXT_PUBLIC_BASE_URL'}/project/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

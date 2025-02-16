@@ -14,7 +14,7 @@ const AdminBlogCard = ({ blog }: { blog: Record<string, unknown> }) => {
 
     try {
       // Send DELETE request to API
-      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${id}`, {
+      await fetch(`${'process.env.NEXT_PUBLIC_BASE_URL'}/blog/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

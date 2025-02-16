@@ -92,7 +92,7 @@ const EditBlogDetails = ({ blog }: { blog: any }) => {
       const updatedBlog = { ...data, image: imageUrl };
       console.log("Updated Blog Data:", updatedBlog);
 
-      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${blog?._id}`, {
+      await fetch(`${'process.env.NEXT_PUBLIC_BASE_URL'}/blog/${blog?._id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
