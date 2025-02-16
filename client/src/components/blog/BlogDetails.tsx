@@ -1,26 +1,12 @@
+import { TBlog } from "@/types/globalTypes";
 import Image from "next/image";
 import Link from "next/link";
 
-const blogPost = {
-  title: "Understanding React Server Components",
-  description:
-    "React Server Components (RSC) are a new paradigm in React, allowing for improved performance by shifting rendering logic to the server.",
-  image: "https://www.smartdraw.com/working-smarter/img/how-to-create-a-project-planning-map.svg",
-  content: `
-    React Server Components (RSC) allow developers to offload rendering from the client to the server, reducing bundle size and improving performance. 
-    Unlike traditional React components, RSCs do not run on the client side, meaning they do not include event handlers or local state.
-    
-    This new model enables developers to build faster applications with improved SEO and reduced JavaScript execution time on the client.
-    
-    In this article, we'll explore the core principles of React Server Components, how they differ from Client Components, and how you can leverage them in your Next.js projects.
-  `,
-  author: "John Doe",
-  date: "February 15, 2025",
-};
 
-export default function BlogDetails() {
+
+export default function BlogDetails({blog}:{blog:TBlog}) {
   return (
-    <div className="container mx-auto max-w-3xl p-6">
+    <div className="container mx-auto max-w-3xl p-6 min-h-[80vh] grid place-item-center">
       {/* Back Button */}
       <div className="mb-4">
         <Link href="/blog">
@@ -33,8 +19,8 @@ export default function BlogDetails() {
       {/* Blog Image */}
       <div className="w-full h-64 rounded-lg overflow-hidden shadow-md">
         <Image
-          src={blogPost.image}
-          alt={blogPost.title}
+          src={blog?.image}
+          alt={blog?.title}
           width={800}
           height={500}
           className="w-full h-full object-cover"
@@ -42,16 +28,16 @@ export default function BlogDetails() {
       </div>
 
       {/* Title */}
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mt-4">{blogPost.title}</h1>
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mt-4">{blog?.title}</h1>
 
       {/* Meta Info */}
       <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
-        By <span className="font-semibold">{blogPost.author}</span> • {blogPost.date}
+        By <span className="font-semibold">{blog?.author}</span> • {blog?.date}
       </p>
 
       {/* Blog Content */}
       <div className="mt-6 text-gray-700 dark:text-gray-300 leading-relaxed">
-        {blogPost.content.split("\n").map((para, index) => (
+        {blog?.description?.split("\n")?.map((para, index) => (
           <p key={index} className="mb-4">
             {para}
           </p>
