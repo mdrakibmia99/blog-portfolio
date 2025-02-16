@@ -3,8 +3,9 @@ import { useState } from "react";
 import AdminBlogCard from "./AdminBlogCard";
 import AddBlogPost from "./AddBlogPost";
 import { TBlog } from "@/types/globalTypes";
+import { TUserSession } from "@/types/session.user.type";
 
-const AdminBlog = ({ blogs }: { blogs: TBlog[] }) => {
+const AdminBlog = ({ blogs,session }: { blogs: TBlog[],session:TUserSession }) => {
   const [search, setSearch] = useState("");
   const filteredBlogs = blogs?.filter((blog) =>
     blog.title.toLowerCase().includes(search.toLowerCase())
@@ -24,7 +25,7 @@ const AdminBlog = ({ blogs }: { blogs: TBlog[] }) => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
-          <AddBlogPost />
+          <AddBlogPost  session={session}/>
         </div>
       </div>
 

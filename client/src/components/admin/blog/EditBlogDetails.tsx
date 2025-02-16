@@ -16,14 +16,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
-import { startTransition, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { FaEdit } from "react-icons/fa";
 import Image from "next/image";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { sonarId } from "@/utils/sonarId";
+
 import { revalidateBlogs } from "@/actions/revalidationData";
+import { sonarId } from "@/utils/sonarId";
 
 const formSchema = z.object({
   image: z.string().min(1, "Image is required."),
@@ -31,12 +32,13 @@ const formSchema = z.object({
   description: z.string().min(1, "Description is required."),
   author: z.string().min(1, "Author is required."),
   date: z.string().min(1, "Date is required."),
-  userEmail: z.string().email("Invalid email format"),
+  // userEmail: z.string().email("Invalid email format"),
 });
 
 const EditBlogDetails = ({ blog }: { blog: any }) => {
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -46,7 +48,7 @@ const EditBlogDetails = ({ blog }: { blog: any }) => {
       description: "",
       author: "",
       date: "",
-      userEmail: "",
+      // userEmail: "",
     },
   });
 
@@ -57,16 +59,17 @@ const EditBlogDetails = ({ blog }: { blog: any }) => {
       description: blog?.description || "",
       author: blog?.author || "",
       date: blog?.date || "",
-      userEmail: blog?.userEmail || "",
+      // userEmail: blog?.userEmail || "",
     });
   }, [blog, form]);
 
   const handleImageChange = (file: File) => {
     setImage(file);
+    setImagePreview(URL.createObjectURL(file)); // Create a preview URL
   };
 
   const onSubmit = async (data: any) => {
-    const toastId = toast.loading("Updating blog...");
+    toast.loading("Updating blog...", { id: sonarId });
     try {
       let imageUrl = data.image;
       if (image) {
@@ -97,10 +100,11 @@ const EditBlogDetails = ({ blog }: { blog: any }) => {
         body: JSON.stringify(updatedBlog), // Send data to update
       });
       await revalidateBlogs();
-      toast.success("Blog updated successfully!", { id: toastId });
+      toast.success("Blog updated successfully!", { id: sonarId });
       setOpen(false);
     } catch (error) {
-      toast.error("Failed to update blog.", { id: toastId });
+      console.log(error);
+      toast.error("Failed to update blog.", { id: sonarId });
     }
   };
 
@@ -120,29 +124,39 @@ const EditBlogDetails = ({ blog }: { blog: any }) => {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-4"
               >
-                {blog.image && (
+                 {/* Show the existing image or the selected image preview */}
+                 {imagePreview ? (
+                  <Image
+                    src={imagePreview}
+                    alt={blog.title}
+                    width={100}
+                    height={100}
+                    className="rounded-lg"
+                  />
+                ) : blog.image ? (
                   <Image
                     src={blog.image}
                     alt={blog.title}
-                    width={300}
-                    height={200}
+                    width={100}
+                    height={100}
                     className="rounded-lg"
                   />
-                )}
+                ) : null}
 
                 <FormField
                   control={form.control}
                   name="image"
-                  render={({ field }) => (
+                  render={() => (
                     <FormItem>
                       <FormLabel>Image</FormLabel>
                       <FormControl>
                         <Input
                           type="file"
                           accept="image/*"
-                          onChange={(e) =>
-                            handleImageChange(e.target.files?.[0]!)
-                          }
+                          onChange={(e) => {
+                            const file = e?.target?.files?.[0];
+                            handleImageChange(file as File);
+                          }}
                         />
                       </FormControl>
                     </FormItem>
@@ -201,7 +215,7 @@ const EditBlogDetails = ({ blog }: { blog: any }) => {
                   )}
                 />
 
-                <FormField
+                {/* <FormField
                   name="userEmail"
                   control={form.control}
                   render={({ field }) => (
@@ -212,7 +226,7 @@ const EditBlogDetails = ({ blog }: { blog: any }) => {
                       </FormControl>
                     </FormItem>
                   )}
-                />
+                /> */}
 
                 <Button type="submit" className="w-full">
                   Update Blog
