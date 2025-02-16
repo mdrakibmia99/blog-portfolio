@@ -10,12 +10,14 @@ import { Send } from "lucide-react";
 import { getSession } from "next-auth/react";
 import image from "@/assets/images/contact.jpg"
 import Image from "next/image";
+import { toast } from "sonner";
+import { sonarId } from "@/utils/sonarId";
 
 type FormData = {
   name: string;
   subject: string;
-  email: string;
-  comment: string;
+  userEmail: string;
+  message: string;
 };
 
 export default function Contact() {
@@ -35,7 +37,7 @@ export default function Contact() {
       const session = await getSession();
       if (session?.user?.email) {
         setUserEmail(session.user.email);
-        setValue("email", session.user.email);
+        setValue("userEmail", session.user.email);
       }
     };
     fetchSession();
@@ -43,6 +45,23 @@ export default function Contact() {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     console.log("Form Data:", data);
+    toast.loading("Sending Message...", { id: sonarId });
+    try {
+      await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/message`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data), // Send data to update
+        }
+      );
+      toast.success("Message sent successfully!", { id: sonarId });
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to send message!", { id: sonarId });
+    }
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
   };
@@ -134,7 +153,7 @@ export default function Contact() {
                 value={userEmail}
                 disabled
                 className="cursor-not-allowed bg-gray-200 dark:bg-gray-700"
-                {...register("email")}
+                {...register("userEmail")}
               />
             </div>
 
@@ -146,9 +165,9 @@ export default function Contact() {
               <Textarea
                 placeholder="Write your comment..."
                 rows={4}
-                {...register("comment", { required: "Comment cannot be empty" })}
+                {...register("message", { required: "Comment cannot be empty" })}
               />
-              {errors.comment && <p className="text-red-500 text-sm">{errors.comment.message}</p>}
+              {errors.message && <p className="text-red-500 text-sm">{errors.message.message}</p>}
             </div>
 
             {/* Submit Button */}

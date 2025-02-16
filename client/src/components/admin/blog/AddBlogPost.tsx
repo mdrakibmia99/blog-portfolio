@@ -54,10 +54,10 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
 
   const handleImageChange = (file: File) => {
     setImage(file);
-    console.log(file,"test file")
+    console.log(file, "test file");
     if (file) {
       setImagePreview(URL?.createObjectURL(file) || null);
-    }else{
+    } else {
       setImagePreview(null);
     }
   };
@@ -106,7 +106,6 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
       setImage(null);
       setImagePreview(null);
       setOpen(false);
-
     } catch (error) {
       console.log(error);
       toast.error("Failed to add blog post. Please try again.", {
@@ -120,13 +119,13 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
       <DialogTrigger asChild>
         <span
           onClick={() => setOpen(true)}
-          className="bg-primary-black text-cyan-600 shadow-md py-2 px-3 hover:shadow-lg rounded cursor-pointer"
+          className="bg-gray-900 text-cyan-500 dark:bg-white dark:text-cyan-600 shadow-md py-2 px-3 hover:shadow-lg rounded cursor-pointer transition-all"
         >
-          Add Blog Post
+          Add Blog
         </span>
       </DialogTrigger>
       <DialogContent className="px-2">
-        <DialogTitle className="sr-only">Add Blog Post</DialogTitle>
+        <DialogTitle className="sr-only">Add Blog</DialogTitle>
         <div className=" max-h-[70vh] overflow-auto">
           <Form {...form}>
             <form
@@ -142,7 +141,7 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
                   height={100}
                   className="rounded-lg"
                 />
-              ) }
+              )}
 
               <FormField
                 control={form.control}
@@ -156,9 +155,8 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
                         accept="image/*"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
-                          
-                            handleImageChange(file as File);
-                          
+
+                          handleImageChange(file as File);
                         }}
                       />
                     </FormControl>

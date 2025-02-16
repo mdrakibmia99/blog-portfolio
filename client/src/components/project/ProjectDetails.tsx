@@ -10,13 +10,13 @@ export default function PortfolioProject({ project }: { project: TProject }) {
       <h1 className="text-3xl font-bold text-cyan-600">{project?.title}</h1>
 
       {/* Project Image */}
-      <div className="mt-6">
+      <div className="mt-6 w-full">
         <Image
           src={project?.image}
           alt={project?.title}
-          width={800}
-          height={450}
-          className="rounded-lg shadow-md w-full object-cover"
+          width={600}
+          height={250}
+          className="rounded-lg shadow-md w-full h-[300px] object-contain "
         />
       </div>
 

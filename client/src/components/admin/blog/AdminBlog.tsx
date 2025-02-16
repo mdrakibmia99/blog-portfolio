@@ -13,7 +13,7 @@ const AdminBlog = ({ blogs,session }: { blogs: TBlog[],session:TUserSession }) =
 
   return (
     <div className="container mx-auto overflow-auto lg:min-w-[900px] px-2 p-6">
-      <div className="px-2 md:px-6 my-5">
+      <div className="px-2  my-5">
         <h3 className="text-center md:text-4xl text-2xl font-bold my-2">
           Manage Blog
         </h3>

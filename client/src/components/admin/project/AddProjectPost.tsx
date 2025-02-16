@@ -110,7 +110,12 @@ const AddProjectPost = ({ session }: { session: TUserSession }) => {
     <div>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button onClick={() => setOpen(true)}>Add Project</Button>
+        <span
+          onClick={() => setOpen(true)}
+          className="bg-gray-900 text-cyan-500 dark:bg-white dark:text-cyan-600 shadow-md py-2 px-3 hover:shadow-lg rounded cursor-pointer transition-all"
+        >
+          Add Project
+        </span>
         </DialogTrigger>
         <DialogContent className="!max-w-[600px] h-[75vh]">
           <DialogTitle>Edit Blog</DialogTitle>

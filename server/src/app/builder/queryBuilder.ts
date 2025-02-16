@@ -36,27 +36,16 @@ class QueryBuilder<T> {
       "limit",
       "page",
       "fields",
-      "minPrice",
-      "maxPrice",
+      "email"
     ];
     excludeFields.forEach((el) => delete queryObj[el]);
+    
+
   
-    // Numeric filtering (minPrice & maxPrice)
-    const priceFilter: Record<string, any> = {}; // Explicitly define as a generic object
-  
-    if (this.query.minPrice) {
-      priceFilter["price"] = { $gte: Number(this.query.minPrice) };
-    }
-    if (this.query.maxPrice) {
-      priceFilter["price"] = {
-        ...priceFilter["price"],
-        $lte: Number(this.query.maxPrice),
-      };
-    }
-  
+
     this.modelQuery = this.modelQuery.find({
       ...queryObj,
-      ...priceFilter,
+
     } as FilterQuery<T>);
   
     return this;

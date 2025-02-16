@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { StatusCodes } from "http-status-codes";
 import catchAsync from "../../utils/catchAsync";
 import { blogService } from "./blog.service";
@@ -21,12 +22,14 @@ const createBlog = catchAsync(async (req, res) => {
     });
   });
   const getallBlog = catchAsync(async (req, res) => {
-    const result=await blogService.getAllBlog();
+    const email = req?.query;
+    const result=await blogService.getAllBlog(email as any);
     res.status(StatusCodes.OK).json({
       success: true,
       message: 'all blog get successfully',
       statusCode: StatusCodes.OK,
-      data:result
+      data: result.result,
+      meta:result.meta
     });
   });
   const updateBlog = catchAsync(async (req, res) => {

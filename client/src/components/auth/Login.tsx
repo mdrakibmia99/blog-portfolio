@@ -28,7 +28,7 @@ const LoginButton = () => {
 
             <button
               onClick={() => signIn("google",{
-                callbackUrl:"http://localhost:3000"
+                callbackUrl:"https://blog-portfolio-backend.vercel.app"
               })}
               className="w-full flex items-center justify-center gap-2 bg-red-500 text-white py-2 rounded-lg mb-3 hover:bg-red-600 transition"
             >
@@ -37,7 +37,7 @@ const LoginButton = () => {
 
             <button
               onClick={() => signIn("github",{
-                callbackUrl:"http://localhost:3000"
+                callbackUrl:"https://blog-portfolio-backend.vercel.app"
               })}
               className="w-full flex items-center justify-center gap-2 bg-gray-900 text-white py-2 rounded-lg hover:bg-gray-800 transition"
             >

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { StatusCodes } from 'http-status-codes';
 import catchAsync from '../../utils/catchAsync';
 import { projectService } from './project.service';
@@ -21,12 +22,14 @@ const getSingleProject = catchAsync(async (req, res) => {
   });
 });
 const getAllProject = catchAsync(async (req, res) => {
-  const result = await projectService.getAllProject();
+  const email = req?.query;
+  const result = await projectService.getAllProject(email as any);
   res.status(StatusCodes.OK).json({
     success: true,
     message: 'Project retrieve successfully',
     statusCode: StatusCodes.OK,
-    data: result,
+    data: result.result,
+    meta: result.meta,
   });
 });
 const updateProject = catchAsync(async (req, res) => {
