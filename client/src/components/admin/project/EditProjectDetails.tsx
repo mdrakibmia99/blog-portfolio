@@ -94,7 +94,7 @@ import { TProject } from "@/types/globalTypes";
         }
   
         const updateProject = { ...data, image: imageUrl };
-        console.log("Updated Blog Data:", updateProject);
+        // console.log("Updated Blog Data:", updateProject);
   
         await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/project/${project?._id}`, {
           method: "PATCH",

@@ -35,7 +35,7 @@ const formSchema = z.object({
 });
 
 const AddBlogPost = ({ session }: { session: TUserSession }) => {
-  console.log(session?.user?.email, "user");
+  // console.log(session?.user?.email, "user");
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -54,7 +54,7 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
 
   const handleImageChange = (file: File) => {
     setImage(file);
-    console.log(file, "test file");
+    // console.log(file, "test file");
     if (file) {
       setImagePreview(URL?.createObjectURL(file) || null);
     } else {
@@ -89,7 +89,7 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
         ...data,
         image: imageUrl,
       };
-      const createBlog = await fetch(
+       await fetch(
         `${process.env.NEXT_PUBLIC_BASE_URL}/blog`,
         {
           method: "POST",
@@ -99,7 +99,7 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
           body: JSON.stringify(blogData), // Send data to update
         }
       );
-      console.log(await createBlog.json(), "create blog response");
+      // console.log(await createBlog.json(), "create blog response");
       await revalidateBlogs();
       toast.success("Blog create successfully!", { id: sonarId });
       form.reset();

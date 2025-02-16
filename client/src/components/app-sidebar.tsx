@@ -42,7 +42,7 @@ const items = [
 
 export function AppSidebar() {
    const pathname = usePathname(); 
-   console.log(pathname,"path Name");
+  //  console.log(pathname,"path Name");
   return (
     <Sidebar>
       <SidebarContent>

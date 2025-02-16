@@ -85,7 +85,7 @@ const AddProjectPost = ({ session }: { session: TUserSession }) => {
       const imageUrl = result.secure_url;
 
       const updateProject = { ...data, image: imageUrl };
-      console.log("Updated Blog Data:", updateProject);
+      // console.log("Updated Blog Data:", updateProject);
 
       await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/project`, {
         method: "POST",

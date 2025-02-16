@@ -44,7 +44,7 @@ export default function Contact() {
   }, [setValue]);
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log("Form Data:", data);
+    // console.log("Form Data:", data);
     toast.loading("Sending Message...", { id: sonarId });
     try {
       await fetch(
