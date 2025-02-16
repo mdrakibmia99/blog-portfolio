@@ -11,6 +11,14 @@ const blogSchema = new Schema<IProject>(
       trim: true,
       required: [true, 'Description is Required'],
     },
+    techStack:{
+      type: [String],
+      required: [true, 'Tech Stack is Required'],
+      default: [],
+    },githubLink: { type: String, required: [true, 'GitHub Link is Required'] },
+    liveLink: { type: String, required: [true, 'Live Link is Required'] },
+    userEmail: { type: String, required: [true, 'User Email is Required'] },
+
   },
   {
     // it automatic add two field 1.updatedAt 2.createdAt

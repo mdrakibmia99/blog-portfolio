@@ -54,7 +54,12 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
 
   const handleImageChange = (file: File) => {
     setImage(file);
-    setImagePreview(URL.createObjectURL(file)); // Create a preview URL
+    console.log(file,"test file")
+    if (file) {
+      setImagePreview(URL?.createObjectURL(file) || null);
+    }else{
+      setImagePreview(null);
+    }
   };
 
   const onSubmit = async (data: any) => {
@@ -97,6 +102,9 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
       console.log(await createBlog.json(), "create blog response");
       await revalidateBlogs();
       toast.success("Blog create successfully!", { id: sonarId });
+      form.reset();
+      setImage(null);
+      setImagePreview(null);
       setOpen(false);
 
     } catch (error) {
@@ -126,7 +134,7 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
               className="space-y-4 max-w-md mx-auto w-full"
             >
               {/* Show the existing image or the selected image preview */}
-              {imagePreview ? (
+              {imagePreview && (
                 <Image
                   src={imagePreview}
                   alt="Preview Image"
@@ -134,7 +142,7 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
                   height={100}
                   className="rounded-lg"
                 />
-              ) : null}
+              ) }
 
               <FormField
                 control={form.control}
@@ -148,9 +156,9 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
                         accept="image/*"
                         onChange={(e) => {
                           const file = e.target.files?.[0];
-                          if (file) {
-                            handleImageChange(file);
-                          }
+                          
+                            handleImageChange(file as File);
+                          
                         }}
                       />
                     </FormControl>

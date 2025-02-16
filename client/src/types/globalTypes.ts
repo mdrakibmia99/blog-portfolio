@@ -10,3 +10,19 @@ export type TBlog = {
     updatedAt: string;
   };
   
+  export type TProject = {
+    _id: string;
+    image: string;
+    title: string;
+    description: string;
+    techStack: string[];
+    githubLink: string;
+    liveLink: string;
+    userEmail: string;
+  };
+  
+
+export  interface IParamsProps {
+    params: Promise<{
+      id: string;
+    }>;}

@@ -6,9 +6,7 @@ const BlogPage = async() => {
     next: { revalidate: 30 },
   });
   const data = await res.json();
-  // console.log("Data: ", data);
   const blogs = data?.data;
-  //   console.log("Blog: ", blogs);
   return (
     <div>
       <AllBlog  blogs={blogs as TBlog[]}/>
