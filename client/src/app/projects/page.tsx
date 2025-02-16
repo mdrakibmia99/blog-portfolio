@@ -1,6 +1,5 @@
 import AllProject from "@/components/project/AllProject";
 import { TProject } from "@/types/globalTypes";
-import React from "react";
 
 const ProjectPage = async() => {
    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/project`, {
