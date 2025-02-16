@@ -6,7 +6,7 @@ import React from "react";
 
 const AllAdminBlogPage = async() => {
    const session = await getServerSession(authOptions);
-  const res = await fetch(`${'http://localhost:5000/api'}/blog`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blog`, {
     next: { tags: ["blogs"] },
   });
   const data = await res.json();

@@ -87,7 +87,7 @@ const AddProjectPost = ({ session }: { session: TUserSession }) => {
       const updateProject = { ...data, image: imageUrl };
       console.log("Updated Blog Data:", updateProject);
 
-      await fetch(`${'http://localhost:5000/api'}/project`, {
+      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/project`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

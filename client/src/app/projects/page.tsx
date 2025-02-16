@@ -2,11 +2,12 @@ import AllProject from "@/components/project/AllProject";
 import { TProject } from "@/types/globalTypes";
 
 const ProjectPage = async() => {
-   const res = await fetch(`${'http://localhost:5000/api'}/project`, {
+   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/project`, {
           next: { revalidate: 30 },
         });
         const data = await res.json();
         const projects = data?.data;
+        console.log(projects,'project');
   return (
     <div>
       <AllProject projects={projects as TProject[]}/>

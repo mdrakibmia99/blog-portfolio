@@ -8,7 +8,7 @@ interface IProps {
   }
 const DynamicBlogDetailsPage = async({params}:IProps) => {
     const { id } = await params;
-    const res = await fetch(`${'http://localhost:5000/api'}/blog/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${id}`, {
         next: { tags: ["blogs"] },
       });
       const data = await res.json();
