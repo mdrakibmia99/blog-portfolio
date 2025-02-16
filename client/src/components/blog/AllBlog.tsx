@@ -2,47 +2,12 @@
 import BlogCard from "@/components/blog/BlogCard ";
 import { fadeTop, motionStep } from "../About/motion";
 import { motion } from "motion/react";
+import { TBlog } from "@/types/globalTypes";
 
-const blogs = [
-  {
-    _id: "1",
-    title: "Blog 1",
-    description:
-      "A deep dive into Next.js and why it's a great framework for building modern web apps.",
-    image:
-      "https://www.smartdraw.com/working-smarter/img/how-to-create-a-project-planning-map.svg",
-    link: "/blog/1",
-  },
-  {
-    _id: "2",
-    title: "Blog 2",
-    description:
-      "Learn how to optimize and structure your Tailwind CSS code efficiently.",
-    image:
-      "https://www.smartdraw.com/working-smarter/img/how-to-create-a-project-planning-map.svg",
-    link: "/blog/2",
-  },
-  {
-    _id: "3",
-    title: "Blog 3",
-    description:
-      "Learn how to optimize and structure your Tailwind CSS code efficiently.",
-    image:
-      "https://www.smartdraw.com/working-smarter/img/how-to-create-a-project-planning-map.svg",
-    link: "/blog/3",
-  },
-  {
-    _id: "4",
-    title: "Blog 3",
-    description:
-      "Learn how to optimize and structure your Tailwind CSS code efficiently.",
-    image:
-      "https://www.smartdraw.com/working-smarter/img/how-to-create-a-project-planning-map.svg",
-    link: "/blog/4",
-  },
-];
 
-export default function AllBlog() {
+
+export default function AllBlog({blogs,limit}:{blogs: TBlog[],limit?: number}) {
+  const displayedBlogs = limit ? blogs.slice(0, limit) : blogs;
   return (
     <section className="mt-16  text-white h-auto container mx-auto">
       <motion.div variants={fadeTop} {...motionStep} className="mb-16">
@@ -51,8 +16,8 @@ export default function AllBlog() {
             <span className="text-black dark:text-white text-shadow">Blog</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:px-12 px-2">
-            {blogs?.map((blog) => (
-              <BlogCard key={blog._id} {...blog} />
+            {displayedBlogs?.map((blog) => (
+              <BlogCard key={blog._id} blog={blog as TBlog} />
             ))}
           </div>
         </div>
