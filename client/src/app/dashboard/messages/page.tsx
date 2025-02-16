@@ -1,10 +1,15 @@
 import MessageCard from "@/components/message/MessageCard";
+import { Metadata } from "next";
 type TMessage={
   name: string;
   subject: string;
   userEmail: string;
   message: string;
 }
+export const metadata: Metadata = {
+  title: "Message | Rakib",
+  description: "Admin control panel for managing messages",
+};
 const AdminMessagePage = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/message`, {
     next: { tags: ["message"] },

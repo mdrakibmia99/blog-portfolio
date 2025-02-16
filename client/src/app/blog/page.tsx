@@ -1,6 +1,10 @@
 import AllBlog from "@/components/blog/AllBlog";
 import { TBlog } from "@/types/globalTypes";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Blog | Rakib",
+  description: "You can find all Blog here",
+};
 const BlogPage = async() => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blog`, {
     next: { revalidate: 30 },

@@ -1,8 +1,12 @@
 import AdminBlog from "@/components/admin/blog/AdminBlog";
 import { TUserSession } from "@/types/session.user.type";
 import { authOptions } from "@/utils/authOptions";
+import { Metadata } from "next";
 import { getServerSession } from "next-auth";
-import React from "react";
+export const metadata: Metadata = {
+  title: "Blog CRUD | Rakib",
+  description: "User can create, read, update, and delete blog posts",
+};
 
 const AllAdminBlogPage = async() => {
    const session = await getServerSession(authOptions);
