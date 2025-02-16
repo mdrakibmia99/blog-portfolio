@@ -11,12 +11,12 @@ import { TProject } from "@/types/globalTypes";
 import Link from "next/link";
 
 export default async function Home() {
-  const projectTes = await fetch(`${'process.env.NEXT_PUBLIC_BASE_URL'}/project`, {
+  const projectTes = await fetch(`${'http://localhost:5000/api'}/project`, {
     next: { revalidate: 30 },
   });
   const projectData = await projectTes.json();
   
-  const blogRes = await fetch(`${'process.env.NEXT_PUBLIC_BASE_URL'}/blog`, {
+  const blogRes = await fetch(`${'http://localhost:5000/api'}/blog`, {
     next: { revalidate: 30 },
   });
 

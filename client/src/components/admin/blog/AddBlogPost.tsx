@@ -90,7 +90,7 @@ const AddBlogPost = ({ session }: { session: TUserSession }) => {
         image: imageUrl,
       };
       const createBlog = await fetch(
-        `${'process.env.NEXT_PUBLIC_BASE_URL'}/blog`,
+        `${'http://localhost:5000/api'}/blog`,
         {
           method: "POST",
           headers: {
