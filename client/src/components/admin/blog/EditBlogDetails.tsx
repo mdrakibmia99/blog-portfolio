@@ -116,7 +116,7 @@ const EditBlogDetails = ({ blog }: { blog: any }) => {
             <FaEdit className="text-black cursor-pointer hover:scale-110 w-5 h-5" />
           </button>
         </DialogTrigger>
-        <DialogContent className="!max-w-[600px] h-[60vh]">
+        <DialogContent className="!max-w-[600px] h-[75vh]">
           <DialogTitle>Edit Blog</DialogTitle>
           <div className="overflow-auto">
             <Form {...form}>

@@ -22,6 +22,8 @@ import Image from "next/image";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TUserSession } from "@/types/session.user.type";
+import { revalidateBlogs } from "@/actions/revalidationData";
+import { sonarId } from "@/utils/sonarId";
 
 const formSchema = z.object({
   image: z.string().optional(),
@@ -32,8 +34,8 @@ const formSchema = z.object({
   userEmail: z.string().email("Invalid email format"),
 });
 
-const AddBlogPost = ({session}:{session:TUserSession}) => {
-  console.log(session?.user?.email,"user")
+const AddBlogPost = ({ session }: { session: TUserSession }) => {
+  console.log(session?.user?.email, "user");
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -46,10 +48,9 @@ const AddBlogPost = ({session}:{session:TUserSession}) => {
       description: "",
       author: "",
       date: "",
-      userEmail: "",
+      userEmail: session?.user?.email || "", // Set userEmail from session
     },
   });
-
 
   const handleImageChange = (file: File) => {
     setImage(file);
@@ -57,11 +58,11 @@ const AddBlogPost = ({session}:{session:TUserSession}) => {
   };
 
   const onSubmit = async (data: any) => {
-    const toastId = toast.loading("Adding Blog Post...");
+    toast.loading("Adding Blog Post...", { id: sonarId });
 
     try {
       if (!image) {
-        return toast.error("Please select an image first!", { id: toastId });
+        return toast.error("Please select an image first!", { id: sonarId });
       }
 
       const formData = new FormData();
@@ -83,19 +84,26 @@ const AddBlogPost = ({session}:{session:TUserSession}) => {
         ...data,
         image: imageUrl,
       };
-
-      // Proceed to save the blog post with the uploaded image
-      // const res = await addBlog(blogData);
-      // if (res?.data) {
-      //   toast.success("Blog post added successfully!", { id: toastId });
-      //   reset();
-      //   setOpen(false);
-      // } else if (res?.error) {
-      //   toast.error("Failed to add blog post. Please try again.", { id: toastId });
-      // }
+      const createBlog = await fetch(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/blog`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(blogData), // Send data to update
+        }
+      );
+      console.log(await createBlog.json(), "create blog response");
+      await revalidateBlogs();
+      toast.success("Blog create successfully!", { id: sonarId });
+      setOpen(false);
 
     } catch (error) {
-      toast.error("Failed to add blog post. Please try again.", { id: toastId });
+      console.log(error);
+      toast.error("Failed to add blog post. Please try again.", {
+        id: sonarId,
+      });
     }
   };
 
@@ -104,7 +112,7 @@ const AddBlogPost = ({session}:{session:TUserSession}) => {
       <DialogTrigger asChild>
         <span
           onClick={() => setOpen(true)}
-          className="bg-primary-black text-white py-2 px-3 hover:shadow-md rounded cursor-pointer"
+          className="bg-primary-black text-cyan-600 shadow-md py-2 px-3 hover:shadow-lg rounded cursor-pointer"
         >
           Add Blog Post
         </span>
@@ -203,6 +211,7 @@ const AddBlogPost = ({session}:{session:TUserSession}) => {
                 )}
               />
 
+              {/* User Email - Read-Only */}
               <FormField
                 name="userEmail"
                 control={form.control}
@@ -210,7 +219,7 @@ const AddBlogPost = ({session}:{session:TUserSession}) => {
                   <FormItem>
                     <FormLabel>User Email</FormLabel>
                     <FormControl>
-                      <Input {...field} />
+                      <Input {...field} readOnly />
                     </FormControl>
                   </FormItem>
                 )}

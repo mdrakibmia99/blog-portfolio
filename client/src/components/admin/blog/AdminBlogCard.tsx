@@ -4,13 +4,34 @@ import { MdDelete } from "react-icons/md";
 import AdminBlogDetails from "./AdminBlogDetails";
 import EditBlogDetails from "./EditBlogDetails";
 import { TBlog } from "@/types/globalTypes";
+import { toast } from "sonner";
+import { sonarId } from "@/utils/sonarId";
+import { revalidateBlogs } from "@/actions/revalidationData";
 
 const AdminBlogCard = ({ blog }: { blog: Record<string, unknown> }) => {
-  const handleDelete = (id: string) => {
-    console.log(id);
+  const handleDelete = async(id: string) => {
+    toast.loading("Deleting Blog...",{id:sonarId});
+
+    try {
+      // Send DELETE request to API
+      await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blog/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      await revalidateBlogs();
+
+      toast.success("Blog deleted successfully!", { id: sonarId });
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to delete the blog. Please try again.", { id: sonarId });
+    }
   };
+  
   return (
-    <div className="p-4 border rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-xl relative">
+    <div className="p-4 border rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 transition-all duration-300 hover:scale-[1.03] hover:shadow-xl relative">
       {/* Image with admin controls */}
       <div className="w-full h-52 overflow-hidden rounded-lg relative">
         <Image
@@ -22,17 +43,20 @@ const AdminBlogCard = ({ blog }: { blog: Record<string, unknown> }) => {
         />
 
         {/* Show edit & delete buttons if admin */}
-
         <div className="absolute top-2 right-2 flex gap-2">
-          <span className="bg-blue-500 text-white px-3 py-1 rounded-md shadow-md hover:bg-blue-700">
-            {/* <FaRegEdit /> */}
-            <EditBlogDetails blog={blog}/>
+          {/* Edit Button */}
+          <span className="bg-cyan-600 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition-colors duration-300 cursor-pointer flex items-center gap-2">
+            <EditBlogDetails blog={blog} />
+  
           </span>
+
+          {/* Delete Button */}
           <span
             onClick={() => handleDelete(blog?._id as string)}
-            className="bg-red-500 text-white px-3 py-1 rounded-md shadow-md hover:bg-red-700"
+            className="bg-red-500 text-white  p-2 rounded-md shadow-md hover:bg-red-600 transition-colors duration-300 cursor-pointer flex items-center gap-2"
           >
-            <MdDelete />
+            <MdDelete className="w-7 h-7"/>
+           
           </span>
         </div>
       </div>
@@ -46,7 +70,7 @@ const AdminBlogCard = ({ blog }: { blog: Record<string, unknown> }) => {
           {blog?.description as string}
         </p>
         <div className="mt-4">
-          <AdminBlogDetails blog={blog as TBlog}/>
+          <AdminBlogDetails blog={blog as TBlog} />
         </div>
       </div>
     </div>
@@ -54,5 +78,3 @@ const AdminBlogCard = ({ blog }: { blog: Record<string, unknown> }) => {
 };
 
 export default AdminBlogCard;
-
-// dialouge box
