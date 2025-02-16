@@ -1,17 +1,10 @@
 import { Dialog, DialogContent, DialogTrigger, DialogTitle } from "@/components/ui/dialog";
+import { TBlog } from "@/types/globalTypes";
 import Image from "next/image";
 
-interface BlogProps {
-  blog: {
-    image: string;
-    title: string;
-    author: string;
-    date: string;
-    content: string;
-  };
-}
 
-const AdminBlogDetails: React.FC<BlogProps> = ({ blog }) => {
+
+const AdminBlogDetails = ({ blog }:{blog:TBlog}) => {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -50,7 +43,7 @@ const AdminBlogDetails: React.FC<BlogProps> = ({ blog }) => {
 
           {/* Blog Content */}
           <div className="mt-6 text-gray-700 dark:text-gray-300 leading-relaxed">
-            {blog?.content?.split("\n")?.map((para: string, index: number) => (
+            {blog?.description?.split("\n")?.map((para: string, index: number) => (
               <p key={index} className="mb-4">
                 {para}
               </p>

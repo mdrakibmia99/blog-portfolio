@@ -10,7 +10,7 @@ import Project from "@/components/project/Project";
 import Link from "next/link";
 
 export default async function Home() {
-  const res = await fetch(`${process.env.BASE_URL}/blog/`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/blog/`, {
     next: { revalidate: 30 },
   });
   const data = await res.json();

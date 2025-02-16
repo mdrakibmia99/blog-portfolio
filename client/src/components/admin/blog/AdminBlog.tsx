@@ -6,7 +6,7 @@ import { TBlog } from "@/types/globalTypes";
 
 const AdminBlog = ({ blogs }: { blogs: TBlog[] }) => {
   const [search, setSearch] = useState("");
-  const filteredBlogs = blogs.filter((blog) =>
+  const filteredBlogs = blogs?.filter((blog) =>
     blog.title.toLowerCase().includes(search.toLowerCase())
   );
 

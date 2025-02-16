@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
-import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import AdminBlogDetails from "./AdminBlogDetails";
 import EditBlogDetails from "./EditBlogDetails";
+import { TBlog } from "@/types/globalTypes";
 
 const AdminBlogCard = ({ blog }: { blog: Record<string, unknown> }) => {
   const handleDelete = (id: string) => {
@@ -24,16 +24,16 @@ const AdminBlogCard = ({ blog }: { blog: Record<string, unknown> }) => {
         {/* Show edit & delete buttons if admin */}
 
         <div className="absolute top-2 right-2 flex gap-2">
-          <button className="bg-blue-500 text-white px-3 py-1 rounded-md shadow-md hover:bg-blue-700">
+          <span className="bg-blue-500 text-white px-3 py-1 rounded-md shadow-md hover:bg-blue-700">
             {/* <FaRegEdit /> */}
             <EditBlogDetails blog={blog}/>
-          </button>
-          <button
+          </span>
+          <span
             onClick={() => handleDelete(blog?._id as string)}
             className="bg-red-500 text-white px-3 py-1 rounded-md shadow-md hover:bg-red-700"
           >
             <MdDelete />
-          </button>
+          </span>
         </div>
       </div>
 
@@ -46,7 +46,7 @@ const AdminBlogCard = ({ blog }: { blog: Record<string, unknown> }) => {
           {blog?.description as string}
         </p>
         <div className="mt-4">
-          <AdminBlogDetails blog={blog}/>
+          <AdminBlogDetails blog={blog as TBlog}/>
         </div>
       </div>
     </div>
