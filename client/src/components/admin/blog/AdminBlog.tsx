@@ -19,9 +19,9 @@ const AdminBlog = ({ blogs,session }: { blogs: TBlog[],session:TUserSession }) =
         </h3>
         <div className="flex justify-between items-center">
           <input
-            className="p-2 my-3 border-black border-2 text-black rounded-md"
+            className="p-2 my-3 border-black border-2 text-black rounded-md dark:text-white"
             type="text"
-            placeholder="Search name..."
+            placeholder="Search title..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
